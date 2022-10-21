@@ -42,7 +42,8 @@ namespace HTTP5112_Assignment2.Controllers
             if (result == 1)
             {
                 return "There is " + result.ToString() + " way to get the sum 10.";
-            } else
+            } 
+            else
             {
                 return "There are " + result.ToString() + " ways to get the sum 10.";
             }
