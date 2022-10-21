@@ -14,10 +14,10 @@ namespace HTTP5112_Assignment2.Controllers
         ///     This APIs returns the total calories of the selected meals at Chip's Fast Food emporium.
         ///     (2006 J1)
         /// </summary>
-        /// <param name="burger"> Integer value between 1-4 which represent the choice of burger </param>
-        /// <param name="drink"> Integer value between 1-4 which represent the choice of drink </param>
-        /// <param name="side"> Integer value between 1-4 which represent the choice of side </param>
-        /// <param name="dessert"> Integer value between 1-4 which represent the choice of dessert </param>
+        /// <param name="burger"> Integer value between 1-4 which represents the choice of burger </param>
+        /// <param name="drink"> Integer value between 1-4 which represents the choice of drink </param>
+        /// <param name="side"> Integer value between 1-4 which represents the choice of side </param>
+        /// <param name="dessert"> Integer value between 1-4 which represents the choice of dessert </param>
         /// <returns> Returns the total calories of the above choices </returns>
         /// <example>
         ///     api/J1/Menu/4/4/4/4 => 0

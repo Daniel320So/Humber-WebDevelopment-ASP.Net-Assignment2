@@ -54,8 +54,8 @@ namespace HTTP5112_Assignment2.Controllers
             //Converts constraint on X into a 2 dimension array ruleX
             for (int i = 0; i < X; i++)
             {
-                ruleX[i, 0] = sameGroupArr[2* (i + 1) - 2];
-                ruleX[i, 1] = sameGroupArr[2* (i + 1) - 1]
+                ruleX[i, 0] = sameGroupArr[2 * (i + 1) - 2];
+                ruleX[i, 1] = sameGroupArr[2 * (i + 1) - 1];
             }
 
             //Converts constraint on Y into a 2 dimension array ruleY
