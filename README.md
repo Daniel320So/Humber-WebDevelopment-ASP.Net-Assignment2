@@ -44,7 +44,7 @@ There is 1 ways to get the sum 10.
     curl http://localhost:57439/api/J4/GoodGroups/1/A%20B/1/A%20C/1/A%20C%20D
     curl http://localhost:57439/api/J4/GoodGroups/0/%20/0/%20/1/A%20C%20D
     curl http://localhost:57439/api/J4/GoodGroups/1/ELODIE%20CHI/0/%20/2/DWAYNE%20BEN%20ANJALI%20CHI%20FRANCOIS%20ELODIE
-    curl http://localhost:57439/api/J4/GoodGroups/3/A%20B%20G%20L%20J%20K/2/D%20F%20D%20G
+    curl http://localhost:57439/api/J4/GoodGroups/api/J4/GoodGroups/api/J4/GoodGroups/3/A%20B%20G%20L%20J%20K/2/D%20F%20D%20G/4/A%20C%20G%20B%20D%20F%20E%20H%20I%20J%20K%20L
 ```
 
 The expected outputs are
