@@ -29,8 +29,8 @@ namespace HTTP5112_Assignment2.Controllers
         /// <param name="groups"> A string with a list of student name in groups (3 students per group) </param>
         /// <returns> Returns an integer which represent the number of constraintes violated </returns>
         /// <example>
-        ///     api/J4/GoodGroups/1/A%20B/1/A%20C/1/A%20C => 2
-        ///     api/J4/GoodGroups/0/%20/0/%20/1/A%20C => 0
+        ///     api/J4/GoodGroups/1/A%20B/1/A%20C/1/A%20C%20D => 2
+        ///     api/J4/GoodGroups/0/%20/0/%20/1/A%20C%20D => 0
         ///     api/J4/GoodGroups/1/ELODIE%20CHI/0/%20/2/DWAYNE%20BEN%20ANJALI%20CHI%20FRANCOIS%20ELODIE => 0
         ///     api/J4/GoodGroups/3/A%20B%20G%20L%20J%20K/2/D%20F%20D%20G/4/A%20C%20G%20B%20D%20F%20E%20H%20I%20J%20K%20L=> 3  
         /// </example>
@@ -49,13 +49,13 @@ namespace HTTP5112_Assignment2.Controllers
             //Converts input into array
             string[] sameGroupArr = (X > 0)? sameGroup.Split(' ') : null;
             string[] differentGroupArr = (Y > 0)? differentGroup.Split(' ') : null;
+            string[] groupsArr = (G > 0)? groups.Split(' ') : null;
 
             //Converts constraint on X into a 2 dimension array ruleX
             for (int i = 0; i < X; i++)
             {
                 ruleX[i, 0] = sameGroupArr[2* (i + 1) - 2];
-                ruleX[i, 1] = sameGroupArr[2* (i + 1) - 1];
-
+                ruleX[i, 1] = sameGroupArr[2* (i + 1) - 1]
             }
 
             //Converts constraint on Y into a 2 dimension array ruleY
@@ -63,48 +63,50 @@ namespace HTTP5112_Assignment2.Controllers
             {
                 ruleY[i, 0] = differentGroupArr[2 * (i + 1) - 2];
                 ruleY[i, 1] = differentGroupArr[2 * (i + 1) - 1];
-
             }
 
-            string[] groupsArr = groups.Split(' ');
+            //Loop Each Group
             for (int i = 0; i < G; i++)
-            {   //Loop Each Group
+            {   
                 string[] group = { groupsArr[ 3 * (i + 1) - 3], groupsArr[3 * (i + 1) - 2], groupsArr[3 * (i + 1) - 1] };
 
-                // Check is rule X violated
+                // Check is rule X violated by looping Each rule X
                 for (int j = 0; j < X; j++)
-                    //Loop Each rule X
                 {
                     string name1 = ruleX[j,0];
                     string name2 = ruleX[j,1];
 
                     if (group.Contains(name1) && !group.Contains(name2))
                     {
+                        ruleX[j,0] = null; //remove data from the array to avoid duplicating the count
+                        ruleX[j,1] = null;
                         violations++;
                         break;
                     } 
                     else if (!group.Contains(name1) && group.Contains(name2))
                     {
+                        ruleX[j, 0] = null;
+                        ruleX[j, 1] = null;
                         violations++;
                         break;
                     }
                 }
 
-                // Check is rule Y violated
+                // Check is rule Y violated by looping Each rule Y
                 for (int j = 0; j < Y; j++)
-                //Loop Each rule Y
                 {
                     string name1 = ruleY[j, 0];
-                    string name2 = ruleY[j, 0];
+                    string name2 = ruleY[j, 1];
                     if (group.Contains(name1) && group.Contains(name2))
                     {
+                        ruleY[j, 0] = null;
+                        ruleY[j, 1] = null;
                         violations++;
                         break;
                     }
                 }
 
             }
-
             return violations;
         }
     }
